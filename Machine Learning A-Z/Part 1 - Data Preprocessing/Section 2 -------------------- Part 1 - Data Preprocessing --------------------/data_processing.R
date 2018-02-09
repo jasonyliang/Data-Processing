@@ -2,7 +2,7 @@
 
 #Importing the dataset
 dataset = read.csv('Data.csv')
-
+# dataset = dataset[, 2:3]
 # Taking care of missing data
 dataset$Age = ifelse(is.na(dataset$Age),
                      ave(dataset$Age, FUN = function(x) mean(x, na.rm = TRUE)),
@@ -22,7 +22,7 @@ dataset$Purchased = factor(dataset$Purchased,
                          labels = c(0, 1))
 
 # Splitting the dataset into the Training set and Test set
-## install.packages('caTools')
+# # install.packages('caTools')
 library(caTools)
 set.seed(123)
 split = sample.split(dataset$Purchased, SplitRatio = 0.8)
