@@ -29,3 +29,5 @@ test_set = subset(dataset, split == FALSE)
 # Or... instead of adding all the independent variables, you can just add a .
 regressor = lm(formula = Profit ~ .,
                 data = training_set)
+# Predicting Test set results
+y_pred = predict(regressor, newdata = test_set)
