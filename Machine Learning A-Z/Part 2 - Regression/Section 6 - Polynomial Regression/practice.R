@@ -40,3 +40,13 @@ ggplot() +
 
 
 # Visualizing the Polynomial Regression results
+ggplot() + 
+  geom_point(aes(x = dataset$Level, y = dataset$Salary ), 
+             color = 'red') +
+  geom_line(aes(x = dataset$Level, y = predict(poly_reg, newdata = dataset) ), 
+            color = 'blue') +
+  ggtitle("Truth or Bluff (Polynomial Regression)") +
+  xlab("Level") +
+  ylab("Salary")
+
+
