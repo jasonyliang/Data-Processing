@@ -24,18 +24,6 @@ regressor = rpart(formula = Salary ~ .,
 # Predicting a new result
 y_pred = predict(regressor, data.frame(Level = 6.5))
 
-# Visualising the Decision Tree Regression Model results
-# install.packages('ggplot2')
-library(ggplot2)
-ggplot() +
-  geom_point(aes(x = dataset$Level, y = dataset$Salary),
-             colour = 'red') +
-  geom_line(aes(x = dataset$Level, y = predict(regressor, newdata = dataset)),
-            colour = 'blue') +
-  ggtitle('Truth or Bluff (Decision Tree Regression Model)') +
-  xlab('Level') +
-  ylab('Salary')
-
 # Visualising the Decision Tree Regression Model results (for higher resolution and smoother curve)
 # install.packages('ggplot2')
 library(ggplot2)
