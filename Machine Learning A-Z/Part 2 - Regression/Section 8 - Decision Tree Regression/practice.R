@@ -16,13 +16,14 @@ dataset = dataset[2:3]
 # training_set = scale(training_set)
 # test_set = scale(test_set)
 
-# Fitting the Regression Model to the dataset
-# Create your regressor here
-
+# Fitting the Decision Tree Regression Model to the dataset
+library(rpart)
+regressor = rpart(formula = Salary ~ .,
+                  data = dataset)
 # Predicting a new result
 y_pred = predict(regressor, data.frame(Level = 6.5))
 
-# Visualising the Regression Model results
+# Visualising the Decision Tree Regression Model results
 # install.packages('ggplot2')
 library(ggplot2)
 ggplot() +
@@ -30,11 +31,11 @@ ggplot() +
              colour = 'red') +
   geom_line(aes(x = dataset$Level, y = predict(regressor, newdata = dataset)),
             colour = 'blue') +
-  ggtitle('Truth or Bluff (Regression Model)') +
+  ggtitle('Truth or Bluff (Decision Tree Regression Model)') +
   xlab('Level') +
   ylab('Salary')
 
-# Visualising the Regression Model results (for higher resolution and smoother curve)
+# Visualising the Decision Tree Regression Model results (for higher resolution and smoother curve)
 # install.packages('ggplot2')
 library(ggplot2)
 x_grid = seq(min(dataset$Level), max(dataset$Level), 0.1)
