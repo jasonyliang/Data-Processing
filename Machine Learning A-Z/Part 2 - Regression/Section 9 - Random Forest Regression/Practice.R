@@ -21,7 +21,7 @@ library(randomForest)
 set.seed(1234)
 regressor = randomForest(x = dataset[1],#Need a data frame instead of a vector
                          y = dataset$Salary, #This requires a vector
-                         ntree = 10
+                         ntree = 300
                          )
 
 
@@ -31,7 +31,7 @@ y_pred = predict(regressor, data.frame(Level = 6.5))
 # Visualising the Random Forest Regression results (for higher resolution and smoother curve)
 # install.packages('ggplot2')
 library(ggplot2)
-x_grid = seq(min(dataset$Level), max(dataset$Level), 0.1)
+x_grid = seq(min(dataset$Level), max(dataset$Level), 0.01)
 ggplot() +
   geom_point(aes(x = dataset$Level, y = dataset$Salary),
              colour = 'red') +
