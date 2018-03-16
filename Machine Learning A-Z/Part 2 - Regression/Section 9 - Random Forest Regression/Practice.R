@@ -18,6 +18,7 @@ dataset = dataset[2:3]
 
 # Fitting the Random Forest Regression to the dataset
 library(randomForest)
+set.seed(1234)
 regressor = randomForest(x = dataset[1],#Need a data frame instead of a vector
                          y = dataset$Salary, #This requires a vector
                          ntree = 10
