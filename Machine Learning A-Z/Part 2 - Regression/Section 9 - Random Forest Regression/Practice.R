@@ -21,7 +21,7 @@ library(randomForest)
 set.seed(1234)
 regressor = randomForest(x = dataset[1],#Need a data frame instead of a vector
                          y = dataset$Salary, #This requires a vector
-                         ntree = 300
+                         ntree = 500
                          )
 
 
