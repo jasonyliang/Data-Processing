@@ -15,3 +15,8 @@ test_set = subset(dataset, split == FALSE)
 # Feature Scaling
 training_set[, 1:2] = scale(training_set[, 1:2])
 test_set[, 1:2] = scale(test_set[, 1:2])
+
+# Fitting the Logistic Regression to Training Set
+classifier = glm(formula=Purchased~.,
+                 family = binomial,
+                 data = training_set)
