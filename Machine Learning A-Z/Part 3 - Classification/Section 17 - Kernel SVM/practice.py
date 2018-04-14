@@ -1,4 +1,4 @@
-# Classification template
+# Kernel SVM
 
 # Importing the libraries
 import numpy as np
@@ -21,8 +21,9 @@ X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
 
 # Fitting classifier to the Training set
-# Create your classifier here
-
+from sklearn.svm import SVC
+classifier = SVC(kernel = "poly", random_state = 0)
+classifier.fit(X_train, y_train)
 # Predicting the Test set results
 y_pred = classifier.predict(X_test)
 
@@ -41,7 +42,7 @@ plt.xlim(X1.min(), X1.max())
 plt.ylim(X2.min(), X2.max())
 for i, j in enumerate(np.unique(y_set)):
     plt.scatter(X_set[y_set == j, 0], X_set[y_set == j, 1],
-                c = ListedColormap(('red', 'green'))(i), label = j,edgecolor = 'black')
+                c = ListedColormap(('red', 'green'))(i), label = j, edgecolor = 'black')
 plt.title('Classifier (Training set)')
 plt.xlabel('Age')
 plt.ylabel('Estimated Salary')
