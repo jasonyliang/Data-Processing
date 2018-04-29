@@ -16,7 +16,7 @@ set.seed(29)
 kmeans <-  kmeans(X, 5, iter.max = 300, nstart = 10)
 
 # Visualizing the clusters
- library(cluster)
+library(cluster)
 clusplot(X,
          kmeans$cluster,
          lines = 0,
