@@ -16,3 +16,9 @@ plt.title('Dendrogram')
 plt.xlabel('Customers')
 plt.ylabel('Euclidean distances')
 plt.show()
+
+# Fitting Hiearchical Clustering to the mall dataset
+from sklearn.cluster import AgglomerativeClustering
+hc = AgglomerativeClustering(n_cluster= 5, affinity = "euclicean", linkage="ward")
+
+
