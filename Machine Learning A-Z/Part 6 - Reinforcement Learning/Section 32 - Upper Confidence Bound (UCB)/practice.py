@@ -33,4 +33,10 @@ for n in range(0, N):
     numbers_of_selection[ad] += 1
     sums_of_rewards[ad] += dataset.values[n, ad]
     total_reward += dataset.values[n, ad]
-    
+
+# Visualizing the result
+plt.hist(ads_selected)
+plt.title("Histogram of ads selection")
+plt.xlabel('Ads')
+plt.ylabel('Number of times each ad was selected')
+plt.show()
