@@ -32,3 +32,11 @@ for (n in 1:N) {
   sums_of_rewards[ad] = sums_of_rewards[ad] + rewards
   total_reward = total_reward + rewards
 }
+
+# Visualizing the results
+hist( ads_selected,
+      col = 'blue',
+      main = 'Histogram of Ads selection',
+      xlab = 'Ads',
+      ylab = 'Number of times each ad was selected'
+)
