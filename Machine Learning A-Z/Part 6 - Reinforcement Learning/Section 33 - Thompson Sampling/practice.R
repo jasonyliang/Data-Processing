@@ -15,8 +15,8 @@ for (n in 1:N) {
   max_random = 0
   for (i in 1:d) {
     random_beta = rbeta(n = 1,
-                        shape1 = numbers_of_rewards_1 + 1,
-                        shape2 = numbers_of_rewards_0 + 1)
+                        shape1 = numbers_of_rewards_1[i] + 1,
+                        shape2 = numbers_of_rewards_0[i] + 1)
     if (random_beta > max_random) {
       max_random = random_beta
       ad = i
@@ -24,7 +24,7 @@ for (n in 1:N) {
   }
   ads_selected = append(ads_selected, ad)
   rewards = dataset[n, ad]
-  if (rewards == 0) {
+  if (rewards == 1) {
     numbers_of_rewards_1[ad] = numbers_of_rewards_1[ad] + 1
   } else {
     numbers_of_rewards_0[ad] = numbers_of_rewards_0[ad] + 1
