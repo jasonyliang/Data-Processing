@@ -9,6 +9,7 @@ d = 10
 ads_selected = integer()
 numbers_of_selections = integer(d)
 sums_of_rewards = integer(d)
+total_reward = 0
 for (n in 1:N) {
   ad = 0
   max_upper_bound = 0
@@ -25,4 +26,9 @@ for (n in 1:N) {
       ad = i
     }
   }
+  ads_selected = append(ads_selected, ad)
+  numbers_of_selections[ad] = numbers_of_selections[ad] + 1
+  rewards = dataset[n, ad]
+  sums_of_rewards[ad] = sums_of_rewards[ad] + rewards
+  total_reward = total_reward + rewards
 }
