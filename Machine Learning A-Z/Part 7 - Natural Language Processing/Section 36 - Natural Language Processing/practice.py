@@ -20,4 +20,4 @@ review = review.lower()
 review = review.split()
 ps = PorterStemmer()
 review = [ps.stem(word) for word in review if not word in set(stopwords.words('english'))] #set makes it faster
-
+review = ' '.join(review)
