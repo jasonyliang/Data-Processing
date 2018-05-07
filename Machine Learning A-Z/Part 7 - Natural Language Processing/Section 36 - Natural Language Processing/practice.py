@@ -26,5 +26,6 @@ for i in range(0, len(dataset)):
 
 # Creating the Bag of Words Model
 from sklearn.feature_extraction.text import CountVectorizer
-cv = CountVectorizer()
+cv = CountVectorizer(max_features = 1500)
 X = cv.fit_transform(corpus).toarray()
+y = dataset.iloc[:, 1].values
