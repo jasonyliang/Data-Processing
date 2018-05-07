@@ -14,10 +14,17 @@ import nltk
 nltk.download('stopwords')
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
+corpus = []
+for i in range(0, len(dataset)):   
+    review = re.sub('[^a-zA-Z]',' ', dataset['Review'][i])
+    review = review.lower()
+    review = review.split()
+    ps = PorterStemmer()
+    review = [ps.stem(word) for word in review if not word in set(stopwords.words('english'))] #set makes it faster
+    review = ' '.join(review)
+    corpus.append(review)
 
-review = re.sub('[^a-zA-Z]',' ', dataset['Review'][0])
-review = review.lower()
-review = review.split()
-ps = PorterStemmer()
-review = [ps.stem(word) for word in review if not word in set(stopwords.words('english'))] #set makes it faster
-review = ' '.join(review)
+# Creating the Bag of Words Model
+from sklearn.feature_extraction.text import CountVectorizer
+cv = CountVectorizer()
+X = cv.fit_transform(corpus).toarray()
