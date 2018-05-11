@@ -122,10 +122,10 @@ for alpha in alphas:
     np.random.seed(1)
 
     # randomly initialize our weights with mean 0
-    synapse_0 = 2*np.random.random((3,hiddenSize)) - 1
-    synapse_1 = 2*np.random.random((hiddenSize,1)) - 1
+    synapse_0 = 2*np.random.random((3,hidden_size)) - 1
+    synapse_1 = 2*np.random.random((hidden_size,1)) - 1
 
-    for j in xrange(60000):
+    for j in range(60000):
 
         # Feed forward through layers 0, 1, and 2
         layer_0 = X
@@ -136,7 +136,7 @@ for alpha in alphas:
         layer_2_error = layer_2 - y
 
         if (j% 10000) == 0:
-            print("Error after ", str(j), " iterations:" + str(np.mean(np.abs(layer_2_error))))
+            print("Error after ", str(j), " iterations: ", str(np.mean(np.abs(layer_2_error))))
 
         # in what direction is the target value?
         # were we really sure? if so, don't change too much.
@@ -148,6 +148,5 @@ for alpha in alphas:
         # in what direction is the target l1?
         # were we really sure? if so, don't change too much.
         layer_1_delta = layer_1_error * sigmoid_output_to_derivative(layer_1)
-
         synapse_1 -= alpha * (layer_1.T.dot(layer_2_delta))
         synapse_0 -= alpha * (layer_0.T.dot(layer_1_delta))
