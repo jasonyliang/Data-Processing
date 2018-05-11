@@ -68,6 +68,11 @@ for alpha in alphas:
     synapse_0 = 2*np.random.random((3,4)) - 1
     synapse_1 = 2*np.random.random((4,1)) - 1
 
+    prev_synapse_0_weight_update = np.zeros_like(synapse_0)
+    prev_synapse_1_weight_update = np.zeros_like(synapse_1)
+
+    synapse_0_direction_count = np.zeros_like(synapse_0)
+    synapse_1_direction_count = np.zeros_like(synapse_1)
     for j in range(60000):
 
         # Feed forward through layers 0, 1, and 2
@@ -108,3 +113,6 @@ for alpha in alphas:
     print('Synapse 0 Updated Direction:', synapse_0_direction_count)
     print('Synapse 1:', synapse_1)
     print('Synapse 1 Updated Direction:', synapse_1_direction_count)
+
+# Improvement 2: Parameterizing the size of the hidden layer
+print(alphas)
