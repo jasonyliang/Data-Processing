@@ -49,7 +49,7 @@ print(synapse_0)
 
 
 # Improve Neural Network with alphas
-alpha = [0.001,0.01,0.1,1,10,100,1000]
+alphas = [0.001,0.01,0.1,1,10,100,1000]
 X = np.array([[0,0,1],
             [0,1,1],
             [1,0,1],
@@ -92,5 +92,19 @@ for alpha in alphas:
         # were we really sure? if so, don't change too much.
         layer_1_delta = layer_1_error * sigmoid_output_to_derivative(layer_1)
 
+        synapse_1_weight_update = (layer_1.T.dot(layer_2_delta))
+        synapse_0_weight_update = (layer_0.T.dot(layer_1_delta))
+
+        if(j > 0):
+            synapse_0_direction_count += np.abs(((synapse_0_weight_update > 0)+0) - ((prev_synapse_0_weight_update > 0) + 0))
+            synapse_1_direction_count += np.abs(((synapse_1_weight_update > 0)+0) - ((prev_synapse_1_weight_update > 0) + 0))
+
+
         synapse_1 -= alpha * (layer_1.T.dot(layer_2_delta))
         synapse_0 -= alpha * (layer_0.T.dot(layer_1_delta))
+
+        
+    print('Synapse 0:', synapse_0)
+    print('Synapse 0 Updated Direction:', synapse_0_direction_count)
+    print('Synapse 1:', synapse_1)
+    print('Synapse 1 Updated Direction:', synapse_1_direction_count)
