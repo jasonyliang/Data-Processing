@@ -25,7 +25,15 @@ training_set[-11] = scale(training_set[-11])
 test_set[-11] = scale(test_set[-11])
 
 # Fitting ANN to the Training set
-# Create your classifier here
+#install.packages('h2o')
+library(h2o)
+h2o.init(nthreads = -1)
+classifier = h2o.deeplearning(y = 'Exited', 
+                              training_frame = as.h2o(training_set),
+                              activation = 'Rectifier',
+                              hidden = c(6, 6),
+                              epochs = 100,
+                              train_samples_per_iteration = -2)
 
 # Predicting the Test set results
 y_pred = predict(classifier, newdata = test_set[-3])
