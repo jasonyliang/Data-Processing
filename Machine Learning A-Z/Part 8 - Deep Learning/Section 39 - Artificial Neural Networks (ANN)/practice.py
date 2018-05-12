@@ -53,11 +53,16 @@ from keras.layers import Dense
 classifier = Sequential()
 
 # Adding the Input Layer and the first hidden layer
-classifier.add(Dense(output_dim = 6, kernel_initializer = "uniform", activation = 'relu', input_dim = 11))
+classifier.add(Dense(6, kernel_initializer = "uniform", activation = 'relu', input_dim = 11))
 
 # Adding the second hidden layer
-classifier.add(Dense(output_dim = 6, kernel_initializer = "uniform", activation = 'relu'))
+classifier.add(Dense(6, kernel_initializer = "uniform", activation = 'relu'))
 
+# Adding the output layer
+classifier.add(Dense(1, kernel_initializer = "uniform", activation = 'sigmoid'))
+
+# Compiling the ANN
+classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
 
 
 # Predicting the Test set results
