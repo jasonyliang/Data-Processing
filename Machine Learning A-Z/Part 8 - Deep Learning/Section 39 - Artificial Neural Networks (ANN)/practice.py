@@ -42,8 +42,20 @@ sc = StandardScaler()
 X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
 
-# Fitting classifier to the Training set
-# Create your classifier here
+# Part 2 ANN
+
+# importing Keras libraries and packages
+import keras
+from keras.models import Sequential
+from keras.layers import Dense
+
+# Initializing the ANA
+classifier = Sequential()
+
+# Adding the Input Layer and the first hidden layer
+
+
+
 
 # Predicting the Test set results
 y_pred = classifier.predict(X_test)
