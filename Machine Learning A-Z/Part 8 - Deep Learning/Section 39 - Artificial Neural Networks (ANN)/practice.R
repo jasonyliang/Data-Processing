@@ -36,7 +36,9 @@ classifier = h2o.deeplearning(y = 'Exited',
                               train_samples_per_iteration = -2)
 
 # Predicting the Test set results
-y_pred = predict(classifier, newdata = test_set[-3])
+prob_pred = h2o.predict(classifier, newdata = as.h2o(test_set[-11]))
+y_pred = (prob_pred > 0.5)
+y_pred = as.vector(y_pred)
 
 # Making the Confusion Matrix
-cm = table(test_set[, 3], y_pred)
+cm = table(test_set[, 11], y_pred)
