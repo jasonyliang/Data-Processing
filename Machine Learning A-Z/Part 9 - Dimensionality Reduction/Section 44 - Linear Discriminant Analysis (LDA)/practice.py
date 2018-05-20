@@ -1,4 +1,4 @@
-# PCA (principal component analysis)
+# LDA
 
 # From Logistic Regression
 # Importing the libraries
@@ -19,16 +19,16 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, rando
 from sklearn.preprocessing import StandardScaler
 sc_X = StandardScaler()
 X_train = sc_X.fit_transform(X_train)
-X_test = sc_X.transform(X_test)
+X_test = sc_X.transform(X_test)  
 #sc_y = StandardScaler()
 #y_train = sc_y.fit_transform(y_train)
 
-# Applying PCA
-from sklearn.decomposition import PCA
-pca = PCA(n_components = 2) #start with None to see everything, make sure to restart the kernal
-X_train = pca.fit_transform(X_train)
-X_test = pca.transform(X_test)
-explained_variance = pca.explained_variance_ratio_
+# Applying LDA
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
+lda = LDA(n_components = 2)
+X_train = lda.fit_transform(X_train, y_train)
+X_test = lda.transform(X_test) # no need for y_test, not fitting just transforming
+
 
 #fitting Logistic Regression to the Training Set
 from sklearn.linear_model import LogisticRegression
