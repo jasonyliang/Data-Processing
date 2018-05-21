@@ -49,7 +49,7 @@ cv = lapply(folds, function(x) {
   accuracy = (cm[1,1] + cm[2,2]) / (cm[1,1] + cm[2,2] + cm[1,2] + cm[2,1])
   return(accuracy)
 })
-
+accuracy = mean(as.numeric(cv))
 
 # Visualising the Training set results
 library(ElemStatLearn)
